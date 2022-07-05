@@ -14,7 +14,23 @@
   --button-color: #4264eb;
   --button-hover-color: hsl(230, 57%, 50%);
 
+  --color-animation-1: #1e3c72;
+
+  --color-animation-2: #2a5298;
+
   font-size: 62.5%;
+}
+
+::-webkit-scrollbar {
+  width: 0.2rem;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+::selection {
+  background: var(--button-color);
 }
 
 .wrapper {
@@ -28,16 +44,18 @@
 
 body,
 html {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
-  
+
   scroll-behavior: smooth;
   overflow: auto;
 }
 
 body {
-  background-color: #111927;
-  background-image: radial-gradient(at 107%, #2a51f4 0, transparent 59%);
+  background: linear-gradient(to right, #373b44, #4286f4);
+
+  -webkit-animation: color-change-2x 2s linear infinite alternate both;
+  animation: color-change-2x 2s linear infinite alternate both;
 
   font-family: "Roboto", sans-serif;
   text-align: center;
@@ -48,10 +66,8 @@ a {
 }
 
 img {
-  width: 10.5rem;
-  height: 11rem;
-
-  filter: grayscale(1);
+  width: 10rem;
+  height: 10rem;
 }
 
 /* =======CARD======== */
@@ -60,15 +76,22 @@ img {
   margin-top: 6.4rem;
   padding: 2rem;
 
+  background: url(/assets/circle-scatter-haikei.svg) center;
+
   border-radius: 0.9rem;
 
-  background: url(/assets/circle-scatter-haikei.svg) center;
+  box-shadow: 0px 1.3px 2.7px rgba(0, 0, 0, 0.028),
+    0px 3.2px 6.9px rgba(0, 0, 0, 0.04), 0px 6.4px 14.2px rgba(0, 0, 0, 0.05),
+    0px 13.3px 29.2px rgba(0, 0, 0, 0.062), 0px 38px 80px rgba(0, 0, 0, 0.09);
 }
 
-.card:hover * {
+.card:hover h1,
+.card:hover p {
   color: var(--paragraph-color);
+}
 
-  filter: grayscale(0);
+.card:hover img {
+  border: 0.4rem solid var(--button-color);
 }
 
 .profile img {
@@ -77,10 +100,6 @@ img {
   border-radius: 100%;
 
   transition: 0.8s;
-}
-
-.profile:hover img {
-  border: 0.4rem solid var(--button-color);
 }
 
 .profile h1 {
@@ -129,6 +148,10 @@ img {
   transition: background 0.4s;
 }
 
+.profile-links ul li a:nth-last-child(1) {
+  margin-bottom: 0;
+}
+
 .profile-links ul li a:hover {
   background: var(--button-hover-color);
 
@@ -149,9 +172,11 @@ footer p {
   font-weight: 500;
   font-size: 1.2rem;
   line-height: 1.6rem;
-
+  -web-kit-animation: changeColors 2s normal infinite;
   animation: changeColors 2s normal infinite;
 }
+
+/* =======ANIMATIONS======== */
 
 @keyframes changeColors {
   0% {
@@ -165,5 +190,24 @@ footer p {
 
   100% {
     opacity: 0;
+  }
+}
+
+@-webkit-keyframes color-change-2x {
+  0% {
+    background: var(--color-animation-1);
+  }
+
+  100% {
+    background: var(--color-animation-2);
+  }
+}
+@keyframes color-change-2x {
+  0% {
+    background: var(--color-animation-1);
+  }
+
+  100% {
+    background: var(--color-animation-2);
   }
 }
