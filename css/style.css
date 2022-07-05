@@ -62,7 +62,7 @@ img {
 
   border-radius: 0.9rem;
 
-  background: url(/assets/circle-scatter-haikei.svg) center;
+  background: url(../assets/circle-scatter-haikei.svg) center;
 }
 
 .card:hover * {
